@@ -1,7 +1,7 @@
 # Summer Day
 A browser-based visual novel system created by Gravity Break Media. When you take these files and upload them to a webserver, your scripts (txt files found in the scripts folder) will send instructions to create an interactive experience featuring talking characters.
 
-No knowledge of HTML, Javascript, or CSS is necessary to use this, but at the top of game.js, make sure to change the values of TITLE, AUTHOR, and VERSION to your liking. You should also experiment with CSS values to make your game look more unique; just search for "change me" for objects I recommend changing the styles of.
+No knowledge of HTML, Javascript, or CSS is necessary to use this, but at the top of game.js, make sure to change the values of TITLE, AUTHOR, and VERSION to your liking. You should also experiment with CSS values to make your game look more unique; just search for "change me" in style.css for objects I recommend changing the styles of.
 
 To load in new assets, simply add them to the folders provided. You can also replace the existing assets with ones of your own. For images, you can create whatever folders you want to make organization easier. Sound files must be either .ogg or .mp3, preferably both.
 
