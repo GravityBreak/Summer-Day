@@ -121,6 +121,17 @@ The relative URL of the image to bring down from the top.
 
 Instantly disappears the image called by PANIMAGE. Auto-advances.
 
+## DRAMATICLINE
+`COMMAND|DRAMATICLINE|textToDisplay`
+
+Example: `COMMAND|DRAMATICLINE|But the world refused to change.`
+
+Large text that appears near the bottom of the screen. This text is visible on top of the Curtain summoned by `FADETOBLACK` or `CUTTOBLACK`. This text stays on screen for four seconds, then advances the script two seconds after that.
+
+### textToDisplay
+
+Whatever you want the text to display. The text gets pretty big, so don't make it too long or it might overflow off the screen.
+
 ## NEXTCHAPTER
 `COMMAND|NEXTCHAPTER`
 
@@ -162,7 +173,7 @@ COMMAND|CC|5|The closed captioning has begun.
 COMMAND|CC|9|I'll keep the captions close to my pace of speech.
 ```
 
-Sets a closed caption to play during a sound activated by the `PLAYER` command. I recommend having at least two seconds between aech caption for readability. The caption will persist until another one is queued up or a timestamp declared by `CLEARCC` is reached. Auto-advances until the last CC or CLEARCC command in a chain, at which point the script will next advance when the audio player reaches the end of its duration.
+Sets a closed caption to play during a sound activated by the `PLAYER` command. I recommend having at least two seconds between each caption for readability. The caption will persist until another one is queued up or a timestamp declared by `CLEARCC` is reached. Auto-advances until the last CC or CLEARCC command in a chain, at which point the script will next advance when the audio player reaches the end of its duration.
 
 ### timestamp
 
@@ -510,8 +521,106 @@ Fades away the examination window called by `EXAMINE` and deactivates its Examin
 This sets the DEBUG_CLICKABLES constant to true, which allows you to easily see where your Clickareas and Examineareas are when they appear. Just remove this line from the script when you're done with it. Auto-advances.
 
 ## CHOICE
+`COMMAND|CHOICE|title|subdescription|numberOfCorrectOptions`
 
-# TODO
+Example:
+```
+COMMAND|CHOICE|What’s the pattern in the 3 attacks?|1 plausible option|1
+COMMAND|OPTION|PLAUSIBLE|The locations of the attacks|13
+COMMAND|OPTION|X|The victims of the attacks|14
+COMMAND|OPTION|X|The areas surrounding the attacks|15
+COMMAND|OPTION|X|The names of the places attacked|16
+COMMAND|OPTION|X|The times of the attacks|17
+COMMAND|OPTION|none|( CHECK MAP AGAIN )|11
+COMMAND|GOTO|18
+```
+
+A Choice is a menu of Options that the player can select, with each one leading to a different Marker.
+
+This must always be followed by at least one `OPTION`, with a max of 7.
+
+If an `OPTION` that the player selected has a value other than `none`, that value will be remembered if the player goes back to this `CHOICE` by using a `GOTO`. `CHOICE` has a system of "correct" answers that must be revealed before you can click the "move on" button and advance the script past the last `OPTION`. However, you don't have to use Choices this way. You can just have the different options go to different spots in the script without an expectation that you'll return to the `CHOICE`. Auto-advances to the last `OPTION` in the chain.
+
+### title
+
+The title that appears at the top of the screen when the Options appear.
+
+### subdescription
+
+A small blurb that appears below the Options. This can say whatever you want, but one possible use is to specify how many correct Options there are. If this is set to `none`, it won't appear.
+
+### numberOfCorrectOptions
+
+The number of Options with a value of `CORRECT`, `PLAUSIBLE`, or `?` that must be selected by the player for the "move on" arrow to appear, which will allow them to advance the script by one place (usually into a `GOTO` line). Set this to 0 if you want the "move on" button to be available immediately, or to a number higher than the number of Options if you don't want it to appear at all.
+
+## QUIZ
+`COMMAND|QUIZ|title`
+
+A Quiz is simply a Choice with different styling, no `subdescription`, and no `numberOfCorrectAnswers` (and therefore will never generate the "move on" button). Otherwise, it's the same thing and still has to be followed up with up to 7 `OPTION`s.
+
+### title
+
+The title that appears at the top of the screen when the Options appear.
+
+## OPTION
+`COMMAND|OPTION|value|label|markerId`
+Example: `COMMAND|OPTION|X|The victims of the attacks|14`
+
+Up to 7 Options can be placed under a `CHOICE` or `QUIZ`, each leading to a different marker.
+
+If an Option has a `value`, that will be remembered and displayed when the player returns to the same `CHOICE` or `QUiZ` (but forgotten when the player clicks the "move on" arrow).
+
+### value
+
+A value that's remembered if this Option is selected and the player returns to the same `CHOICE` or `QUIZ`.
+
+`X`: A special graphic that appears on the Option, found at "icons/x.png".
+`PLAUSIBLE`: Counts toward the `numberOfCorrectOptions` in a `CHOICE` in order to make the "move on" button appear.
+`CORRECT`: Counts toward the `numberOfCorrectOptions` in a `CHOICE` in order to make the "move on" button appear.
+Anything else: Is printed underneath the Option.
+
+### label
+
+What the Option says. Remember not to make this too long.
+
+### markerId
+
+The name of the Marker within this chapter to jump to when the Option is clicked on.
+
+## FADEPREVLINE
+`COMMAND|FADEPREVLINE`
+
+During dialogue, two lines are always visible at once: The current one, and the previous one, which hovers above it and appears semitransparent. This command makes the previous line fade away completely. Auto-advances.
+
+## FADEALLLINES
+`COMMAND|FADEALLLINES`
+
+Makes all current dialogue boxes visible on screen fade away. Auto-advances.
+
+## SHAKEBOX
+`COMMAND|SHAKEBOX`
+
+Shake the next dialogue box. Auto-advances. The player will be able to advance through the dialogue once the box stops shaking.
+
+## ARRIVELEFT
+`COMMAND|ARRIVELEFT`
+
+Makes the next dialogue box swipe in from the left side. Auto-advances.
+
+## ARRIVERIGHT
+`COMMAND|ARRIVERIGHT`
+
+Makes the next dialogue box swipe in from the right side. Auto-advances.
+
+## LEAVELEFT
+`COMMAND|LEAVELEFT`
+
+Makes the dialogue box on the previous line exit toward the left side, then advances.
+
+## LEAVERIGHT
+`COMMAND|LEAVERIGHT`
+
+Makes the dialogue box on the previous line exit toward the right side, then advances.
 
 ## GOTO
 `COMMAND|GOTO|markerId`
