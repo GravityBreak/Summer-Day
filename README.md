@@ -52,6 +52,8 @@ Commands always start with `COMMAND` in all-caps, followed by `|COMMANDNAME`, an
 ## CHAPTERINFO
 `COMMAND|CHAPTERINFO|chapterName|chapterDescription`
 
+Example: `COMMAND|CHAPTERINFO|The Hole|The protagonist slips and falls into a hole.`
+
 This creates an entry in the chapter select menu, available at the beginning of the game on the bottom-left. This only works once per chapter. If a chapter doesn't use this command, it won't show up in the list.
 
 An accompanying image will show next to the chapter name in the chapter select menu if it's added to the chapterimages folder with the filename "[chapter number].png". So, for example, if 4.txt has a CHAPTERINFO entry, the image at chapterimages/4.png will show next to it in the chapter select.
