@@ -66,6 +66,6 @@ The name of the chapter as shown in the chapter select menu.
 
 A smaller description of the chapter shown underneath the name in the chapter select menu. If this is set to `none`, this will be blank.
 
-# TO BE FINISHED
+# I'M GONNA FINISH WRITING THESE DOWN LATER
 
 Javascript knowledge isn't required, but at the top of game.js, make sure to change TITLE, AUTHOR, and VERSION to your liking.
