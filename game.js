@@ -1541,6 +1541,9 @@ function advanceScript() {
 			case "RESUMEBGM":
 				if (soundEnabled)
 					player.play();
+
+				player.setVolume(1);
+
 				musicPlaying = true;
 				autoAdvance = true;
 				break;
@@ -1599,10 +1602,6 @@ function advanceScript() {
 				document.getElementById("background-img").style.opacity = 0.0;
 				document.getElementById("background-fader-img").style.opacity = 0.0;
 				timers.push(new Timer(advanceScript, 1200));
-				break;
-			case "FADEINIMAGE":
-				break;
-			case "OVERLAPIMAGEFADE":
 				break;
 			case "IMAGELEFT":
 				document.getElementById("image-left").src = commandValue;
@@ -1681,6 +1680,7 @@ function advanceScript() {
 					advanceScript();
 				}, 250));
 				break;
+			case "REMOVEIMAGECENTER":
 			case "REMOVEIMAGE":
 				removeImageCenter();
 				timers.push(new Timer(function() {
