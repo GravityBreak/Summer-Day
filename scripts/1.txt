@@ -1,0 +1,16 @@
+COMMAND|CHAPTERINFO|THE NEW CHAPTER|none
+TILDE|neutral|r|...Wait, what happened? It's a new chapter now?
+SEISMIC|think|l|Yep. NEXTCHAPTER was called on 0.txt, so we're on 1.txt now. Each txt file is a different chapter.
+TILDE|down|r|I didn't even notice it switching over.
+SEISMIC|explain|l|Well, you can use one of these HEADER commands to announce it.
+COMMAND|HEADER|CHAPTER NAME|THE CHAPTER OF CHAPTERS
+SEISMIC|neutral|l|You can also use FADEOUT before NEXTCHAPTER to, you know, make it more natural.
+TILDE|neutral|r|Is this gonna show up on the chapter select?
+SEISMIC|explain|l|Yep, cuz the CHAPTERINFO command was called on this file.
+TILDE|neutral|r|...Not to complain or nothin', but all this just looks like Summer.
+SEISMIC|down|l|Well, you can replace whatever images and sounds you want with your own, as long as they got the same filename. You can also edit the style.css file.
+SEISMIC|happy|l|Experiment with replacing assets and messing with the CSS rules! All the commands are listed on the GitHub page.
+SEISMIC|happy|l|If you want an example of switching up the style, get rid of style.css and rename alternatestyleexample.css to style.css.
+SEISMIC|neutral|l|That's enough for now, though. I'll just FADEALLLINES.
+COMMAND|FADEALLLINES
+COMMAND|END

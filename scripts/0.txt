@@ -1,0 +1,14 @@
+COMMAND|CHAPTERINFO|THE FIRST CHAPTER|This'll show up on the chapter select!
+COMMAND|ARRIVERIGHT
+TILDE|neutral|r|I'm here now! Thanks to the ARRIVERIGHT command.
+SEISMIC|neutral|l|I've been here the whole time.
+COMMAND|SHAKEBOX
+SEAR|angry|l|Tilde!!
+TILDE|shock|r|Agh, what?!
+SEAR|neutral|l|Don't forget that you can use SHAKEBOX before a line when a character is shouting. Or being hit.
+TILDE|neutral|r|I already knew that. Hell, I even knew you can use <b>HTML tags</b> in your script if you really wanna.
+TILDE|neutral|flipr|And by changing my direction from "r" to "flipr", I can look the other way.
+SEAR|down|l|Ah. Then I have nothing to say. I'll just LEAVELEFT.
+COMMAND|LEAVELEFT
+SEISMIC|think|l|Y'know, you should probably switch over to the next chapter. By using the NEXTCHAPTER command, I mean.
+COMMAND|NEXTCHAPTER
