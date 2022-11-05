@@ -1,14 +1,14 @@
-// SUMMER DAY prerelease
-
-var TITLE = "Summer"
-var AUTHOR = "Gravity Break Media"
-var VERSION = "v1.0.3";
+var TITLE = "Untitled Summer Day Game"
+var AUTHOR = "???"
+var VERSION = "v1.0.0";
 var ANGLED_BOXES = true; // Change to false if you don't want randomly angled boxes
 var DEBUG_CLICKABLES = false; // Temporarily change to true if you need to see where your clickareas/examineareas are
 //
 var FRAMEWORK_VERSION = "v1.0.0";
 console.log("☀️ SUMMER DAY " + FRAMEWORK_VERSION + "\nby Gravity Break Media");
 //
+document.title = TITLE;
+
 var begun = false;
 
 var currentChapter = 0; // You can change this to test different points in the script

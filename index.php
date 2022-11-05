@@ -141,7 +141,7 @@
 	    	}
 		?>
 	</script>
-	<script src="game.js" type="text/javascript">document.title = TITLE;</script>
+	<script src="game.js" type="text/javascript"></script>
 </head>
 
 <body onload="pageLoad()" onTouchMove="preventDefault(event)">
