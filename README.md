@@ -20,7 +20,7 @@ or
 Example: `TILDE|happy|l|I'm talking now!`
 
 ### characterName
-The name of your character. This doesn't have to be all-caps if you don't want it to be. To get the character's portrait to show, create a folder with the character's name (in all-lowercase) in the "portraits" folder.
+The name of your character. However you capitalize this will be how it's capitalized in the text box. To get the character's portrait to show, create a folder with the character's name (in all-lowercase) in the "portraits" folder.
 
 If `NOONE` is set as the character name, it'll show a differently-styled box with no portrait. This is good for things like narration.
 
@@ -64,6 +64,6 @@ The name of the chapter as shown in the chapter select menu.
 
 A smaller description of the chapter shown underneath the name in the chapter select menu. If this is set to `none`, this will be blank.
 
-TO BE FINISHED
+# TO BE FINISHED
 
 Javascript knowledge isn't required, but at the top of game.js, make sure to change TITLE, AUTHOR, and VERSION to your liking.
