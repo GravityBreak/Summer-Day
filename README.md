@@ -156,9 +156,11 @@ The name of the sound file without extensions, which must be placed in the sfx f
 `COMMAND|CC|timestamp|caption`
 
 Example:
-`COMMAND|CC|3|Hello!`
-`COMMAND|CC|5|The closed captioning has begun.`
-`COMMAND|CC|9|I'll keep the captions close to my pace of speech.`
+```
+COMMAND|CC|3|Hello!
+COMMAND|CC|5|The closed captioning has begun.
+COMMAND|CC|9|I'll keep the captions close to my pace of speech.
+```
 
 Sets a closed caption to play during a sound activated by the `PLAYER` command. I recommend having at least two seconds between aech caption for readability. The caption will persist until another one is queued up or a timestamp declared by `CLEARCC` is reached. Auto-advances until the last CC or CLEARCC command in a chain, at which point the script will next advance when the audio player reaches the end of its duration.
 
@@ -174,9 +176,11 @@ The caption to display. Don't make this too long; the text is pretty big on-scre
 `COMMAND|CLEARCC|timestamp`
 
 Example:
-`COMMAND|CC|9|I'll keep the captions close to my pace of speech.`
-`COMMAND|CLEARCC|11`
-`COMMAND|CC|13|Luckily, I can give myself time to breathe.`
+```
+COMMAND|CC|9|I'll keep the captions close to my pace of speech.
+COMMAND|CLEARCC|11
+COMMAND|CC|13|Luckily, I can give myself time to breathe.
+```
 
 Sets a point at which the subtitles created by `CC` should disappear until the next one is called. Can make for better presentation. Auto-advances until the last CC or CLEARCC command in a chain, at which point the script will next advance when the audio player reaches the end of its duration.
 
@@ -189,4 +193,347 @@ The number of seconds at which to clear the current caption. Must be a whole num
 
 Removes the audio player at the top of the screen that was previously called by `PLAYER`. Advances after half a second.
 
-# STILL GOTTA FINISH THIS
+## BGM
+`COMMAND|BGM|soundFile`
+
+Example: `COMMAND|BGM|freebird`
+
+Plays background music from a .ogg or .mp3 in the "music" folder. This music will loop endlessly until `FADEBGM` or `PAUSEBGM` are played. Auto-advances.
+
+### soundFile
+
+The filename, without extensions, of the file in the "music" folder. You don't have to put in "music/", it's implied.
+
+## BGMONCE
+`COMMAND|BGMONCE|soundFile`
+
+Example: `COMMAND|BGMONCE|propanenightmares`
+
+Plays background music from a .ogg or .mp3 in the "music" folder. This music play until it finishes, and then it won't loop. Auto-advances.
+
+### soundFile
+
+The filename, without extensions, of the file in the "music" folder. You don't have to put in "music/", it's implied.
+
+## FADEBGM
+`COMMAND|FADEBGM`
+
+Fades out the currently playing music called from either `BGM` or `BGMONCE`. Once its volume reaches 0, it'll stop playing. Auto-advances.
+
+## PAUSEBGM
+`COMMAND|PAUSEBGM`
+
+Instantly stops the currently playing music called from either `BGM` or `BGMONCE`, but keeps its place. If `RESUMEBGM` is called after this, it'll pick up where it left off. Auto-advances.
+
+## RESUMEBGM
+`COMMAND|RESUMEBGM`
+
+Resumes a music track that was originally called with either `BGM` or `BGMONCE` and then paused using either `FADEBGM` or `PAUSEBGM`.
+
+## SFX
+`COMMAND|SFX|soundFile`
+
+Example: `COMMAND|SFX|headexploding`
+
+Plays a .ogg or .mp3 sound file located in the "sfx" folder. Advances once the sound file is finished playing.
+
+### soundFile
+
+The filename, without extensions, of the file in the "sfx" folder. You don't have to put in "sfx/", it's implied.
+
+## QUICKSFX
+`COMMAND|QUICKSFX|soundFile`
+
+Example: `COMMAND|QUICKSFX|tincanbeingshook`
+
+Plays a .ogg or .mp3 sound file located in the "sfx" folder. Identical to SFX, except it auto-advances instead of waiting for the sound to be finished.
+
+### soundFile
+
+The filename, without extensions, of the file in the "sfx" folder. You don't have to put in "sfx/", it's implied.
+
+## BACKGROUND
+`COMMAND|BACKGROUND|imageUrl`
+
+Example: `COMMAND|BACKGROUND|backgrounds/momshouse.jpg`
+
+Sets the background image and slowly fades it in. This will cover as much of the screen as it can. Any previous background will be faded out as this one fades in. Advances 1.7 seconds after the image properly loads in.
+
+### imageUrl
+
+The full relative URL of the image file to use as the background.
+
+## INSTANTBACKGROUND
+`COMMAND|INSTANTBACKGROUND|imageUrl`
+
+Example: `COMMAND|BACKGROUND|images/adumpster.png`
+
+Sets the background image. Identical to `BACKGROUND`, except it happens immediately instead of fading in and auto-advances.
+
+### imageUrl
+
+The full relative URL of the image file to use as the background.
+
+## REMOVEBACKGROUND
+`COMMAND|REMOVEBACKGROUND`
+
+Slowly fades out the current background image. Advances after 1.2 seconds.
+
+## IMAGELEFT
+`COMMAND|IMAGELEFT|imageUrl`
+
+Example: `COMMAND|IMAGELEFT|images/mylefthand.gif`
+
+There are three spots to show images on the game screen. This command makes an image pop up on the left side and plays the sound found at "sfx/image.ogg" or "sfx/image.mp3". Advances half a second after the image loads in properly.
+
+### imageUrl
+
+The full relative URL of the image file to display.
+
+## IMAGECENTER
+`COMMAND|IMAGECENTER|imageUrl`
+
+An alias for `IMAGE`.
+
+## IMAGE
+`COMMAND|IMAGE|imageUrl`
+
+Example: `COMMAND|IMAGE|images/mycenterhand.jpg`
+
+There are three spots to show images on the game screen. This command makes an image pop up in the center and plays the sound found at "sfx/image.ogg" or "sfx/image.mp3". Will usually display bigger than the left and right image slots. Advances half a second after the image loads in properly.
+
+### imageUrl
+
+The full relative URL of the image file to display.
+
+## IMAGERIGHT
+`COMMAND|IMAGERIGHT|imageUrl`
+
+Example: `COMMAND|IMAGELEFT|images/myrighthand.png`
+
+There are three spots to show images on the game screen. This command makes an image pop up on the right side and plays the sound found at "sfx/image.ogg" or "sfx/image.mp3". Advances half a second after the image loads in properly.
+
+### imageUrl
+
+The full relative URL of the image file to display.
+
+## IMAGETWO
+`COMMAND|IMAGETWO|imageUrl1|imageUrl2`
+
+Example: `COMMAND|IMAGETWO|images/myleftfoot.png|images/myrightfoot.png`
+
+A faster version of `IMAGELEFT` followed by `IMAGERIGHT`. Advances half a second after the second image displays.
+
+### imageUrl1, imageUrl2
+
+The full relative URLs of the image files to display.
+
+## IMAGETHREE
+`COMMAND|IMAGETHREE|imageUrl1|imageUrl2|imageUrl3`
+
+Example: `COMMAND|IMAGETWO|friends/jeff.png|friends/ben.png|friends/fred.png`
+
+A faster version of `IMAGELEFT` followed by `IMAGE` and then `IMAGERIGHT`. Advances half a second after the final image displays.
+
+### imageUrl1, imageUrl2, imageUrl3
+
+The full relative URLs of the image files to display.
+
+## REMOVEIMAGELEFT
+`COMMAND|REMOVEIMAGELEFT`
+
+Removes the image on the left side that was displayed through `IMAGELEFT`, `IMAGETWO`, or `IMAGETHREE`. Advances after half a second.
+
+## REMOVEIMAGECENTER
+`COMMAND|REMOVEIMAGECENTER`
+
+An alias for `REMOVEIMAGE`.
+
+## REMOVEIMAGE
+`COMMAND|REMOVEIMAGE`
+
+Removes the image in the center that was displayed through `IMAGE`/`IMAGECENTER` or `IMAGETHREE`. Advances after half a second.
+
+## REMOVEIMAGERIGHT
+`COMMAND|REMOVEIMAGERIGHT`
+
+Removes the image on the right side that was displayed through `IMAGERIGHT`, `IMAGETWO`, or `IMAGETHREE`. Advances after half a second.
+
+## TITLE
+`COMMAND|TITLE|titleToDisplay`
+
+Example: `COMMAND|TITLE|This part is a spoiler`
+
+Displays a message on the top of the screen. This is the same spot text will be displayed during commands like `EXAMINE`, `CHOICE`, etc., so those commands will overwrite whatever you wrote. Auto-advances.
+
+### titleToDisplay
+
+Whatever you want the title at the top of the screen to say.
+
+## REMOVETITLE
+`COMMAND|REMOVETITLE`
+
+Fades away the text that was made visible by `TITLE`. Auto-advances.
+
+## MARKER
+`COMMAND|MARKER|markerId`
+
+EXAMPLE: `COMMAND|MARKER|1`
+
+Markers are extremely important for navigating your script. They're points that other commands can navigate to by referencing the `markerId`. A user can't rewind the script past the point where a marker began. Auto-advances.
+
+### markerId
+
+The name of the marker to be referenced by other commands. I recommend using simple numbers(1, 2, 3, etc.), but you might find it more useful to use descriptive names. Case-sensitive.
+
+## CLICKABLE
+`COMMAND|CLICKABLE|imageUrl`
+
+A Clickable is an image with areas that the user can click on to reach Markers associated with the `CLICKAREA` (invisible portions of the image that lead to new script positions) they clicked. It automatically resizes to cover as much space as the screen will allow without covering the top area with the mute and reverse buttons. This command MUST be followed with at least one `CLICKAREA`. Auto-advances until the last `CLICKAREA` in the chain. The only way to move the script at this point is to click on a Clickarea.
+
+### imageUrl1
+
+The full relative URL of the image file to use as the Clickable.
+
+## CLICKAREA
+`COMMAND|CLICKAREA|x|y|width|height|markerId`
+
+or
+
+`COMMAND|CLICKAREA|full|markerId`
+
+Example:
+```
+COMMAND|CLICKABLE|backgrounds/beachpicture.png
+COMMAND|CLICKAREA|full|1
+COMMAND|CLICKAREA|40|49|235|562|2
+COMMAND|CLICKAREA|63|389|42|90|3
+```
+
+A Clickarea is a portion of a Clickable that you can click on to instantly go to the specified Marker.
+
+Clickareas draw on top of each other in the order provided, meaning later ones will take priority if they overlap. You can have multiple Clickareas going to the same marker. Auto-advances until the last Clickarea in the chain, at which point the script will stop until the player clicks on a Clickarea.
+
+An easy way to figure out the x/y/width/height values of a Clickarea you want to create is to take the picture you're using as a Clickable into MS Paint and use the rectangular selection tool, then pay attention to the numbers at the bottom of the window.
+
+### full
+
+Using `full` in the second syntax above will set the Clickarea to cover the entire Clickable. That means clicking anywhere will lead to the `markerId` provided. Remember that if you place additional Clickareas after this, they'll exist on top of this one, meaning they will take priority. This is good if you want an "incorrect" marker to go to.
+
+### x
+
+The number of pixels past the leftmost part of the Clickable where this Clickarea begins. Setting this to 100 means it's 100 pixels from the left side.
+
+### y
+
+The number of pixels past the topmost part of the Clickable where this Clickarea begins. Setting this to 100 means it's 100 pixels down from the top.
+
+### width
+
+The width of the Clickarea in pixels. Clickareas start from the top-left.
+
+### height
+
+The height of the Clickarea in pixels. Clickareas start from the top-left.
+
+### markerId
+
+The name of the Marker that the script will jump to when this Clickarea is clicked.
+
+## REMOVECLICKABLE
+`COMMAND|REMOVECLICKABLE`
+
+Fades away the image called by `CLICKABLE` and deactivates its Clickareas. Advances after half a second.
+
+## EXAMINE
+`COMMAND|EXAMINE|imageUrl`
+
+An Examine is an image placed in a special examination window that allows the player to drag the image around (assuming it's larger than the window). If this is followed by at least one `EXAMINEAREA` command, then the player can click on the area specified followed by the "check" button in order to go to its associated Marker. Advances until the last EXAMINEAREA in the chain, or doesn't advance if there aren't any. The player has to click the "move on" button if no Examineareas exist (which makes the script advance by one step), or select an Examinearea and click the "check" button if there are(which goes to the marker specified by the Examinearea).
+
+### imageUrl1
+
+The full relative URL of the image file to place in the examination window.
+
+## EXAMINEAREA
+`COMMAND|EXAMINEAREA|x|y|width|height|markerId`
+
+or
+
+`COMMAND|EXAMINEAREA|full|markerId`
+
+Example:
+```
+COMMAND|EXAMINE|images/crimescene.png
+COMMAND|EXAMINEAREA|full|nothinghere
+COMMAND|EXAMINEAREA|40|49|235|562|clue1
+COMMAND|EXAMINEAREA|63|389|42|90|clue2
+```
+
+An Examinearea is a portion of the image used in `EXAMINE` that you can select in the examination window. Clicking the "check" button afterwards will go to the specified Marker.
+
+Examinearea draw on top of each other in the order provided, meaning later ones will take priority if they overlap. You can have multiple Examinearea going to the same marker. Auto-advances until the last Examinearea in the chain, at which point the script will stop until the player selects an Examinearea and clicks the "check" button.
+
+An easy way to figure out the x/y/width/height values of an Examinearea you want to create is to take the picture you're using for `EXAMINE` into MS Paint and use the rectangular selection tool, then pay attention to the numbers at the bottom of the window.
+
+### full
+
+Using `full` in the second syntax above will set the Examinearea to cover the entire Examine image. That means selecting any spot and then clicking the "check" button will lead to the `markerId` provided. Remember that if you place additional Examineareas after this, they'll exist on top of this one, meaning they will take priority. This is good if you want an "incorrect" marker to go to.
+
+### x
+
+The number of pixels past the leftmost part of the Examine image where this Examinearea begins. Setting this to 100 means it's 100 pixels from the left side.
+
+### y
+
+The number of pixels past the topmost part of the Examine image where this Examinearea begins. Setting this to 100 means it's 100 pixels down from the top.
+
+### width
+
+The width of the Examinearea in pixels. Examineareas start from the top-left.
+
+### height
+
+The height of the Examinearea in pixels. Examineareas start from the top-left.
+
+### markerId
+
+The name of the Marker that the script will jump to when this Examinearea is selected and then the player clicks the "check" button.
+
+## REMOVEEXAMINE
+`COMMAND|REMOVEEXAMINE`
+
+Fades away the examination window called by `EXAMINE` and deactivates its Examineareas. Advances after half a second.
+
+## DEBUGCLICKABLES
+`COMMAND|DEBUGCLICKABLES`
+
+This sets the DEBUG_CLICKABLES constant to true, which allows you to easily see where your Clickareas and Examineareas are when they appear. Just remove this line from the script when you're done with it. Auto-advances.
+
+## CHOICE
+
+# TODO
+
+## GOTO
+`COMMAND|GOTO|markerId`
+
+Jump to the marker specified in the current chapter.
+
+### markerId
+
+The name of the marker to jump to.
+
+## WAIT
+`COMMAND|WAIT|timeToWait`
+
+Example: `COMMAND|WAIT|5000`
+
+Pauses the script for the number of milliseconds specified, then advances.
+
+### timeToWait
+
+The time to wait for the script advances in milliseconds. 1000 is one second.
+
+## END
+`COMMAND|END`
+
+Stops the script. Put this at the end. Does not advance.
