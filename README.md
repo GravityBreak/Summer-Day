@@ -157,7 +157,7 @@ Smaller text to display underneath the larger one. If this is set to `none`, it 
 
 Example: `COMMAND|PLAYER|audiobookentry`
 
-Opens a sound player at the top of the screen. The player can restart the sound and click on the progress bar to navigate to different points in the audio. This player has an option for closed-captioning, which is controlled using the commands below. Advances as soon as the sound file is done playing (or when the player clicks past the end of it on the progress bar). After this advances, the player continues staying at the top of the screen to be listened to until `REMOVEPLAYER` is called. If this is followed by CC and/or CLEARCC commands, it will auto-advance up to the last one of those commands.
+Opens a sound player at the top of the screen. You can restart the sound with a button and click on the progress bar to navigate to different points in the audio. This player has an option for closed-captioning, which is controlled using the `CC` and `CLEARCC` commands below. Advances as soon as the sound file is done playing (or when the player clicks past the end of it on the progress bar). After this advances, the player continues staying at the top of the screen to be listened to until `REMOVEPLAYER` is called. If this is followed by `CC` and/or `CLEARCC` commands, it will auto-advance up to the last one of those commands.
 
 ### soundName
 
