@@ -220,7 +220,7 @@ The filename, without extensions, of the file in the "music" folder. You don't h
 
 Example: `COMMAND|BGMONCE|propanenightmares`
 
-Plays background music from a .ogg or .mp3 in the "music" folder. This music play until it finishes, and then it won't loop. Auto-advances.
+Plays background music from a .ogg or .mp3 in the "music" folder. This music will play until it finishes, and then it won't loop. Auto-advances.
 
 ### soundFile
 
